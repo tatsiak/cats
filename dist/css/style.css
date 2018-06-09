@@ -1,0 +1,20 @@
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: solid 1px black; }
+  .header * {
+    margin: 20px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    overflow: hidden;
+    height: 50px;
+    width: 50px; }
+  .header .header__logo {
+    background-image: url("../img/logo.svg"); }
+  .header .header__cart {
+    background-image: url("../img/cart.svg"); }

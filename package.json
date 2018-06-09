@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tatsiak/fe-start#readme",
   "devDependencies": {
+    "bootstrap-4-grid": "^2.4.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
@@ -27,6 +28,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-tinypng": "^1.0.2",
     "gulp-uglify": "^3.0.0",
+    "normalize.css": "^8.0.0",
     "run-sequence": "^2.2.1"
   },
   "dependencies": {}

@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px black;
+  * {
+    margin: 20px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    overflow: hidden;
+    height: 50px;
+    width: 50px;
+  }
+  .header__logo {
+    background-image: url("../img/logo.svg");
+  }
+
+  .header__cart {
+    background-image: url("../img/cart.svg");
+  }
+}

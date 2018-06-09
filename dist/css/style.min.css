@@ -1,0 +1,1 @@
+.header{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between;border-bottom:1px solid #000}.header *{margin:20px;background-repeat:no-repeat;background-position:50%;background-size:contain;overflow:hidden;height:50px;width:50px}.header .header__logo{background-image:url(../img/logo.svg)}.header .header__cart{background-image:url(../img/cart.svg)}
