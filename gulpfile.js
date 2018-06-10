@@ -1,25 +1,34 @@
 var gulp = require("gulp"),
   sass = require("gulp-sass"),
-  imagemin = require("gulp-imagemin"),
   del = require("del"),
   runSequence = require("run-sequence"),
   rename = require("gulp-rename"),
   cssnano = require("gulp-cssnano"),
   htmlmin = require("gulp-htmlmin"),
   uglify = require("gulp-uglify"),
-  tinypng = require("gulp-tinypng"),
   autoprefixer = require("gulp-autoprefixer");
+  concat = require("gulp-concat");
 
-gulp.task("styles", function() {
+  gulp.task("sass", function() {
   return gulp
     .src("app/scss/**/*.scss")
     .pipe(sass())
     .pipe(autoprefixer("last 2 version"))
-    .pipe(gulp.dest("dist/css"))
-    .pipe(rename({ suffix: ".min" }))
+    .pipe(gulp.dest("app/css"))
+});
+
+gulp.task("css", function() {
+  return gulp
+    .src("app/css/**/*.css")
+    .pipe(concat('style.min.css'))
     .pipe(cssnano())
     .pipe(gulp.dest("dist/css"));
 });
+
+gulp.task("styles", function() {
+  runSequence("sass", "css");
+  });
+  
 
 gulp.task("html", function() {
   return gulp
@@ -29,11 +38,7 @@ gulp.task("html", function() {
 });
 
 gulp.task("images", function() {
-  return gulp
-    .src("app/img/*")
-    // TODO define how to handle ico, svg, gif with minifiers.
-    // .pipe(tinypng("RyRnHifHneWlxM6gJE6Ffgc8QLwWKPFt"))
-    .pipe(gulp.dest("dist/img"));
+  return gulp.src("app/img/*").pipe(gulp.dest("dist/img"));
 });
 
 gulp.task("scripts", function() {
@@ -48,7 +53,7 @@ gulp.task("clean:dist", function() {
 });
 
 gulp.task("build", function(callback) {
-  runSequence("clean:dist", ["styles", "html", "images", "scripts"]);
+  runSequence("clean:dist", ["styles", "css", "html", "images", "scripts"]);
 });
 
 gulp.task("watch", function() {
@@ -56,6 +61,7 @@ gulp.task("watch", function() {
   //   TODO define way to rebuild project after changing any scss file
   gulp.watch("app/scss/**/style.scss", ["styles"]);
   gulp.watch("app/**/*.html", ["html"]);
+  gulp.watch("app/js/*.js", ["scripts"]);
 });
 
 gulp.task("default", ["build", "watch"]);

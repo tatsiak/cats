@@ -1,0 +1,44 @@
+@import "colors";
+
+.cat {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .cat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $blue-background;
+    width: 220px;
+    height: 220px;
+    border-radius: 10px;
+    position: relative;
+    .cat-card__price {
+      position: absolute;
+      top: 20px;
+      text-align: center;
+      background-image: url("../img/tag.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 40% 0;
+      width: 100%;
+    }
+    .cat-card__image {
+      width: 90%;
+      height: 90%;
+    }
+  }
+  .cat-data {
+    display: flex;
+    justify-content: space-between;
+    max-width: 220px;
+    .cat-data__name {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+    .cat-data__category {
+      font-weight: bold;
+    }
+  }
+}

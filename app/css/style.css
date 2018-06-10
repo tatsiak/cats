@@ -1,0 +1,74 @@
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: solid 1px black; }
+  .header * {
+    margin: 20px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    overflow: hidden;
+    height: 50px;
+    width: 50px; }
+  .header .header__logo {
+    background-image: url("../img/logo.svg"); }
+  .header .header__cart {
+    background-image: url("../img/cart.svg"); }
+
+.cat {
+  min-height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .cat .cat-card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: #D4E8FE;
+    width: 220px;
+    height: 220px;
+    border-radius: 10px;
+    position: relative; }
+    .cat .cat-card .cat-card__price {
+      position: absolute;
+      top: 20px;
+      text-align: center;
+      background-image: url("../img/tag.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: 40% 0;
+      width: 100%; }
+    .cat .cat-card .cat-card__image {
+      width: 90%;
+      height: 90%; }
+  .cat .cat-data {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    max-width: 220px; }
+    .cat .cat-data .cat-data__name {
+      text-transform: capitalize;
+      font-weight: bold; }
+    .cat .cat-data .cat-data__category {
+      font-weight: bold; }
