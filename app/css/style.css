@@ -19,6 +19,10 @@
   .header .header__cart {
     background-image: url("../img/cart.svg"); }
 
+.content {
+  max-height: calc(100vh - 100px);
+  overflow-y: scroll; }
+
 .cat {
   min-height: 250px;
   display: -webkit-box;

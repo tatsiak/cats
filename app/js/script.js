@@ -4,6 +4,8 @@ var catTemplate = document.querySelector("#cat-template");
 var container = document.querySelector(".container");
 var catCounter = 0;
 
+var content = document.querySelector(".content");
+
 function getCatData() {
   catCounter++;
   var xmlHttp = new XMLHttpRequest();
@@ -35,4 +37,20 @@ function buildRow() {
   row.appendChild(buildCat());
   row.appendChild(buildCat());
   container.appendChild(row);
+  var contentHeight = content.getAttribute("height");
+  content.setAttribute("height", contentHeight + 100);
 }
+
+function print() {
+  console.log(1);
+  if (content.offsetHeight > container.offsetHeight) {
+    buildRow();
+    print();
+  } else return;
+}
+
+print();
+
+window.addEventListener("scroll", function() {
+  console.log('22')
+});
