@@ -1,10 +1,10 @@
 "use strict";
 
-var catTemplate = document.querySelector("#cat-template");
-var container = document.querySelector(".container");
-var catCounter = 0;
-
-var content = document.querySelector(".content");
+var catTemplate = document.querySelector("#cat-template"),
+  container = document.querySelector(".container"),
+  catCounter = 0,
+  content = document.querySelector(".content"),
+  isBuilding = 0;
 
 function getCatData() {
   catCounter++;
@@ -30,27 +30,26 @@ function buildCat() {
 }
 
 function buildRow() {
-  var row = document.createElement("div");
-  row.classList.add("row");
-  row.appendChild(buildCat());
-  row.appendChild(buildCat());
-  row.appendChild(buildCat());
-  row.appendChild(buildCat());
-  container.appendChild(row);
-  var contentHeight = content.getAttribute("height");
-  content.setAttribute("height", contentHeight + 100);
+  if (!isBuilding) {
+    isBuilding = 1;
+    var row = document.createElement("div");
+    row.classList.add("row");
+    row.appendChild(buildCat());
+    row.appendChild(buildCat());
+    row.appendChild(buildCat());
+    row.appendChild(buildCat());
+    container.appendChild(row);
+    isBuilding = 0;
+  }
 }
 
-function print() {
-  console.log(1);
+(function printFirstScreen() {
   if (content.offsetHeight > container.offsetHeight) {
     buildRow();
-    print();
+    printFirstScreen();
   } else return;
-}
+})();
 
-print();
-
-window.addEventListener("scroll", function() {
-  console.log('22')
+content.addEventListener("scroll", function() {
+  buildRow();
 });
