@@ -1,24 +1,26 @@
 "use strict";
 
 var catTemplate = document.querySelector("#cat-template"),
-  container = document.querySelector(".container"),
-  catCounter = 0,
+  catsContainer = document.querySelector(".container.cats"),
   content = document.querySelector(".content"),
-  isBuilding = 0;
+  filterElement = document.querySelector('.filter'),
+  filters,
+  cats,
+  isBuilding = 0,
+  pageCount = 0,
+  filterArray = [];
 
-function getCatData() {
-  catCounter++;
+function getCatsData() {
   var xmlHttp = new XMLHttpRequest();
-  var url = "https://ma-cats-api.herokuapp.com/api/cats/" + catCounter;
+  var url = "https://ma-cats-api.herokuapp.com/api/cats?page=" + pageCount;
   xmlHttp.open("GET", url, false);
   xmlHttp.send(null);
-  var json = JSON.parse(xmlHttp.responseText);
-  if (json.status == 404) return getCatData();
-  else return json;
+  pageCount++;
+  var catsObject = JSON.parse(xmlHttp.responseText)
+  return catsObject;
 }
 
-function buildCat() {
-  var data = getCatData();
+function getCatMarkup(data) {
   var clone = document.importNode(catTemplate.content, true);
   clone.querySelector(".cat-card__price").textContent = data.price;
   clone.querySelector(".cat-card__image > img").src = data.img_url;
@@ -29,27 +31,31 @@ function buildCat() {
   return clone;
 }
 
-function buildRow() {
-  if (!isBuilding) {
-    isBuilding = 1;
-    var row = document.createElement("div");
-    row.classList.add("row");
-    row.appendChild(buildCat());
-    row.appendChild(buildCat());
-    row.appendChild(buildCat());
-    row.appendChild(buildCat());
-    container.appendChild(row);
-    isBuilding = 0;
-  }
-}
-
-(function printFirstScreen() {
-  if (content.offsetHeight > container.offsetHeight) {
-    buildRow();
-    printFirstScreen();
-  } else return;
+(function printCats(){
+  var data = getCatsData();
+  data.cats.forEach(function(cat){
+    if(!filterArray.includes(cat.category)) filterArray.push(cat.category)
+    catsContainer.appendChild(getCatMarkup(cat));
+  })
+  filterArray.forEach(function(item){
+    var button = document.createElement('button');
+    button.innerHTML = item;
+    button.classList.add(item);
+    filterElement.appendChild(button);
+  })
 })();
 
-content.addEventListener("scroll", function() {
-  buildRow();
-});
+cats = catsContainer.querySelectorAll('.cat');
+filters = filterElement.querySelectorAll('button');
+
+filters.forEach(function(item){
+  item.addEventListener('click', function(e){
+    
+    cats.forEach(function (cat){
+      var category = cat.querySelector('.cat-data__category').textContent
+      if (category == e.target.classList[0]){
+        cat.classList.add('hide')
+      }
+    })
+  })
+})

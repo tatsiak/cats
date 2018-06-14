@@ -5,11 +5,22 @@
   overflow-y: scroll;
 }
 
+.cats.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hide{
+  display: none!important;
+}
+
 .cat {
-  min-height: 250px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 20px;
   .cat-card {
     display: flex;
     flex-direction: column;
