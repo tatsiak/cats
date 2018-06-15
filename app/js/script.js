@@ -50,11 +50,10 @@ filters = filterElement.querySelectorAll('button');
 
 filters.forEach(function(item){
   item.addEventListener('click', function(e){
-    
     cats.forEach(function (cat){
       var category = cat.querySelector('.cat-data__category').textContent
       if (category == e.target.classList[0]){
-        cat.classList.add('hide')
+        cat.classList.toggle('hide')
       }
     })
   })

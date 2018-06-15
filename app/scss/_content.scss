@@ -9,23 +9,53 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  .cat:nth-of-type(1n + 1) > .cat-card {
+    background-color: nth($bg-colors, 1);
+  }
+  .cat:nth-of-type(2n + 2) > .cat-card {
+    background-color: nth($bg-colors, 2);
+  }
+  .cat:nth-of-type(3n + 3) > .cat-card {
+    background-color: nth($bg-colors, 3);
+  }
+  .cat:nth-of-type(4n + 4) > .cat-card {
+    background-color: nth($bg-colors, 4);
+  }
+  .cat:nth-of-type(5n + 5) > .cat-card {
+    background-color: nth($bg-colors, 5);
+  }
 }
 
-.hide{
-  display: none!important;
+.hide {
+  display: none !important;
 }
 
 .cat {
   height: 250px;
+  width: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 20px;
+
+  &:hover {
+    .cat-card {
+      width: 215px;
+      height: 215px;
+    }
+  }
+  .cat-card:nth-child(1) {
+    // background-color: nth($bg-colors, 1);
+  }
+
   .cat-card {
+    // TODO make more smooth animation
+    transition: all ease-in 0.2s;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $blue-background;
     width: 220px;
     height: 220px;
     border-radius: 10px;
@@ -37,10 +67,11 @@
       background-image: url("../img/tag.svg");
       background-repeat: no-repeat;
       background-size: contain;
-      background-position: 40% 0;
+      background-position: 30% 0;
       width: 100%;
     }
     .cat-card__image {
+      position: absolute;
       width: 90%;
       height: 90%;
     }
