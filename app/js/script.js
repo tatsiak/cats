@@ -4,7 +4,6 @@ var catTemplate = document.querySelector("#cat-template"),
   catsContainer = document.querySelector(".container.cats"),
   content = document.querySelector(".content"),
   filterElement = document.querySelector('.filter'),
-  filters,
   cats,
   isBuilding = 0,
   pageCount = 0,
@@ -41,20 +40,18 @@ function getCatMarkup(data) {
     var button = document.createElement('button');
     button.innerHTML = item;
     button.classList.add(item);
+    filterElement.addEventListener('click', filterTrigger)
     filterElement.appendChild(button);
   })
 })();
 
 cats = catsContainer.querySelectorAll('.cat');
-filters = filterElement.querySelectorAll('button');
 
-filters.forEach(function(item){
-  item.addEventListener('click', function(e){
-    cats.forEach(function (cat){
-      var category = cat.querySelector('.cat-data__category').textContent
-      if (category == e.target.classList[0]){
-        cat.classList.toggle('hide')
-      }
-    })
+function filterTrigger(e){
+  cats.forEach(function (cat){
+    var category = cat.querySelector('.cat-data__category').textContent
+    if (category == e.target.classList[0]){
+      cat.classList.toggle('hide')
+    }
   })
-})
+}
