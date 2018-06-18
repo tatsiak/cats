@@ -48,9 +48,11 @@ function getCatMarkup(data) {
 cats = catsContainer.querySelectorAll('.cat');
 
 function filterTrigger(e){
+  var clickedFilterName = e.target.classList[0];
+  e.target.classList.toggle('filter__active')
   cats.forEach(function (cat){
     var category = cat.querySelector('.cat-data__category').textContent
-    if (category == e.target.classList[0]){
+    if (category == clickedFilterName){
       cat.classList.toggle('hide')
     }
   })

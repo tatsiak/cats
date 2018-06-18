@@ -22,6 +22,17 @@
 .content {
   max-height: calc(100vh - 100px);
   overflow-y: scroll; }
+  .content .filter button {
+    border: none;
+    background: lightgray;
+    border-radius: 10px;
+    margin: 0 5px; }
+    .content .filter button:focus {
+      outline: none;
+      border: 1px solid gray; }
+  .content .filter .filter__active {
+    background: gray;
+    color: white; }
 
 .cats.container {
   display: -webkit-box;

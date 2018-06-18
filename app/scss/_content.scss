@@ -3,6 +3,22 @@
 .content {
   max-height: calc(100vh - 100px);
   overflow-y: scroll;
+  .filter {
+    button {
+      border: none;
+      background: lightgray;
+      border-radius: 10px;
+      margin: 0 5px;
+      &:focus {
+        outline: none;
+        border: 1px solid gray;
+      }
+    }
+    .filter__active {
+      background: gray;
+      color: white;
+    }
+  }
 }
 
 .cats.container {
@@ -44,9 +60,6 @@
       width: 215px;
       height: 215px;
     }
-  }
-  .cat-card:nth-child(1) {
-    // background-color: nth($bg-colors, 1);
   }
 
   .cat-card {
