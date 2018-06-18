@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px black;
-  * {
+  .header__logo, .header__cart{
     margin: 20px;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -17,5 +17,57 @@
 
   .header__cart {
     background-image: url("../img/cart.svg");
+    position: relative;
+    display: inline-block;
+  }
+
+  .header__cart .header__cart_items {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    /* Position the tooltip */
+    position: fixed;
+    width: 150px;
+    padding: 15px 0;
+    top: 50px;
+    right: 50px;
+    z-index: 1;
+  }
+
+  .header__cart_all{
+    position: relative;
+  }
+
+  .header__cart:hover .header__cart_items {
+    visibility: visible;
+  }
+
+  .header__cart_items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    .cat.header__cart_item {
+      width: 50px;
+      height: 50px;
+      .cat-card {
+        width: 50px;
+        height: 50px;
+      }
+      .cat-card__price {
+        display: none;
+      }
+      .cat-data {
+        display: none;
+      }
+      &:hover {
+        .cat-card {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }    
   }
 }

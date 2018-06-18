@@ -15,6 +15,8 @@
         <header class="header">
             <div class="header__logo"></div>
             <div class="header__cart">
+                <div class="header__cart_items">
+                    <div class="header__cart_item empty">Cart is empty.</div></div>
             </div>
         </header>
         <section class="content">
@@ -28,7 +30,7 @@
             </div>
             <div class="container cats">
                 <template id="cat-template">
-                    <div class="cat">
+                    <div class="cat" draggable="true">
                         <div class="cat-card">
                             <div class="cat-card__price"></div>
                             <div class="cat-card__image">
