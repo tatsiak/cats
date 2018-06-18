@@ -93,11 +93,11 @@ function addCartItem(item, id) {
   cartItems.appendChild(clone);
 }
 
-function onDrop(event) {
-  if (event.preventDefault) event.preventDefault();
-  if (event.stopPropagation) event.stopPropagation();
-  else event.cancelBubble = true;
-  var id = event.dataTransfer.getData("id");
+function onDrop(e) {
+  if (e.preventDefault) e.preventDefault();
+  if (e.stopPropagation) e.stopPropagation();
+  else e.cancelBubble = true;
+  var id = e.dataTransfer.getData("id");
   var item = document.getElementById(id);
   addCartItem(item, id);
   item.classList.add('hide');

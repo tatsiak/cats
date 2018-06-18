@@ -6,17 +6,18 @@
   .filter {
     button {
       border: none;
-      background: lightgray;
+      background: gray;
+      color: white;
       border-radius: 10px;
       margin: 0 5px;
       &:focus {
         outline: none;
-        border: 1px solid gray;
+        border: 0.5px solid gray;
       }
     }
     .filter__active {
-      background: gray;
-      color: white;
+      background: lightgray;
+      color: black;
     }
   }
 }

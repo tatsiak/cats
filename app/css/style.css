@@ -66,15 +66,16 @@
   overflow-y: scroll; }
   .content .filter button {
     border: none;
-    background: lightgray;
+    background: gray;
+    color: white;
     border-radius: 10px;
     margin: 0 5px; }
     .content .filter button:focus {
       outline: none;
-      border: 1px solid gray; }
+      border: 0.5px solid gray; }
   .content .filter .filter__active {
-    background: gray;
-    color: white; }
+    background: lightgray;
+    color: black; }
 
 .cat:nth-of-type(1n + 1) > .cat-card {
   background-color: #cef4d5; }
