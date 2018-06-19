@@ -153,10 +153,9 @@
     .cat .cat-card .cat-card__image {
       position: absolute;
       width: 90%;
-      height: 90%; }
-      .cat .cat-card .cat-card__image img {
-        width: 100%;
-        height: 100%; }
+      height: 90%;
+      background-size: contain;
+      background-position: 0 5px; }
   .cat .cat-data {
     display: -webkit-box;
     display: -ms-flexbox;

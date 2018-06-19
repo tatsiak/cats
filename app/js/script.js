@@ -24,8 +24,8 @@ function getCatsData() {
 function getCatMarkup(data) {
   var clone = document.importNode(catTemplate.content, true);
   clone.querySelector(".cat-card__price").textContent = data.price;
-  clone.querySelector(".cat-card__image > img").src = Modernizr.svg ? data.img_url : "img/default_cat.png";
-  clone.querySelector(".cat-card__image > img").setAttribute("alt", data.name);
+  var imageSource = Modernizr.svg ? data.img_url : 'img/default_cat.png';
+  clone.querySelector(".cat-card__image").setAttribute('style', 'background-image: url("' + imageSource +'")')
   clone.querySelector(".cat-data__name").textContent = data.name;
   clone.querySelector(".cat-data__id").textContent = data.id;
   clone.querySelector(".cat-data__category").textContent = data.category;
