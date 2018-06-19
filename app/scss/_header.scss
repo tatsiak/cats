@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   border-bottom: solid 1px black;
-  .header__logo, .header__cart{
+  .header__logo,
+  .header__cart {
     margin: 20px;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -36,19 +37,21 @@
     z-index: 1;
   }
 
-  .header__cart_all{
+  .header__cart_all {
     position: relative;
   }
 
   .header__cart:hover .header__cart_items {
+    opacity: 1;
     visibility: visible;
   }
 
-  .header__cart_items{
+  .header__cart_items {
+    opacity: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
+
     .cat.header__cart_item {
       width: 50px;
       height: 50px;
@@ -68,6 +71,6 @@
           height: 50px;
         }
       }
-    }    
+    }
   }
 }

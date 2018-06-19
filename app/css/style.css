@@ -6,7 +6,8 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-bottom: solid 1px black; }
-  .header .header__logo, .header .header__cart {
+  .header .header__logo,
+  .header .header__cart {
     margin: 20px;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -36,8 +37,10 @@
   .header .header__cart_all {
     position: relative; }
   .header .header__cart:hover .header__cart_items {
+    opacity: 1;
     visibility: visible; }
   .header .header__cart_items {
+    opacity: 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
