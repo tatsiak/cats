@@ -8,17 +8,27 @@ var catTemplate = document.querySelector("#cat-template"),
   cartItems = headerCart.querySelector(".header__cart_items"),
   cats,
   isBuilding = 0,
-  pageCount = 0,
+  pageCount = 1,
   filterArray = [];
 
 function getCatsData() {
   var xmlHttp = new XMLHttpRequest();
   var url = "https://ma-cats-api.herokuapp.com/api/cats?page=" + pageCount;
   xmlHttp.open("GET", url, false);
+
+  xmlHttp.onload = function() {
+    if (xmlHttp.status >= 200 && xmlHttp.status < 400) {
+      // Success!
+      var data = JSON.parse(xmlHttp.responseText);
+      pageCount++;
+      printCats(data);
+    } else {
+      // We reached our target server, but it returned an error
+      console.error(xmlHttp.responseText);
+    }
+  };
+
   xmlHttp.send(null);
-  pageCount++;
-  var catsObject = JSON.parse(xmlHttp.responseText);
-  return catsObject;
 }
 
 function getCatMarkup(data) {
@@ -33,8 +43,7 @@ function getCatMarkup(data) {
   return clone;
 }
 
-(function printCats() {
-  var data = getCatsData();
+function printCats(data) {
   data.cats.forEach(function(cat) {
     if (!filterArray.includes(cat.category)) filterArray.push(cat.category);
     catsContainer.appendChild(getCatMarkup(cat));
@@ -46,8 +55,9 @@ function getCatMarkup(data) {
     filterElement.addEventListener("click", filterTrigger);
     filterElement.appendChild(button);
   });
-})();
+};
 
+getCatsData()
 cats = catsContainer.querySelectorAll(".cat");
 
 cats.forEach(function(cat) {
