@@ -1,5 +1,9 @@
 @import "colors";
 
+.body__wrapper * {
+  transition: all ease-in-out 0.2s;
+}
+
 .content {
   max-height: calc(100vh - 100px);
   overflow-y: scroll;
@@ -58,14 +62,12 @@
 
   &:hover {
     .cat-card {
-      width: 215px;
-      height: 215px;
+      width: 218px;
+      height: 218px;
     }
   }
 
   .cat-card {
-    // TODO make more smooth animation
-    transition: all ease-in 0.2s;
     margin: auto;
     display: flex;
     flex-direction: column;
