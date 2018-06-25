@@ -103,6 +103,9 @@
   .content .filter .filter__active {
     background: lightgray;
     color: black; }
+  .content #load {
+    width: 300px;
+    height: 10px; }
 
 .cat:nth-of-type(1n + 1) > .cat-card {
   background-color: #cef4d5; }
