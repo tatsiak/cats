@@ -13,11 +13,28 @@ var catTemplate = document.querySelector("#cat-template"),
   pageCount = 1,
   filterArray = [];
 
-// build
-getCatsData();
-content.addEventListener("scroll", getCatsData);
+// local storage polyfill
+if (!('localStorage' in window)) {
+  window.localStorage = {
+    _data: {},
+    setItem: function(id, val) {
+      return (this._data[id] = String(val));
+    },
+    getItem: function(id) {
+      return this._data.hasOwnProperty(id) ? this._data[id] : undefined;
+    }
+  };
+}
 
-function getCatsData() {
+
+// build first screen
+printCats();
+
+// scroll and load more cats
+content.addEventListener("scroll", printCats);
+
+// get cats data from server and print it on page
+function printCats() {
   if (isElementInViewport(load) && !gettingData) {
     gettingData = true;
     var xmlHttp = new XMLHttpRequest();
@@ -53,6 +70,7 @@ function getCatsData() {
   }
 }
 
+// build cat element from cats data
 function getCatMarkup(data) {
   var clone = document.importNode(catTemplate.content, true);
   clone.querySelector(".cat-card__price").textContent = data.price;
@@ -67,6 +85,7 @@ function getCatMarkup(data) {
   return clone;
 }
 
+// 
 function filterTrigger(e) {
   var clickedFilterName = e.target.classList[0];
   e.target.classList.toggle("filter__active");
@@ -78,6 +97,7 @@ function filterTrigger(e) {
   });
 }
 
+// 
 function isElementInViewport(el) {
   var rect = el.getBoundingClientRect();
   return (
@@ -88,7 +108,8 @@ function isElementInViewport(el) {
   );
 }
 
-// drag and drop
+
+// drag and drop part
 
 headerCart.addEventListener("dragover", onDragOver);
 headerCart.addEventListener("drop", onDrop);
@@ -125,18 +146,21 @@ function onDrop(e) {
   else e.cancelBubble = true;
   var id = e.dataTransfer.getData("id");
   addCartItem(id);
-  var itemsInCart = window.localStorage.getItem('itemsInCart');
-  itemsInCart =  itemsInCart ? itemsInCart + ',' + id : id;
-  window.localStorage.setItem('itemsInCart', itemsInCart);
+  var itemsInCart = window.localStorage.getItem("itemsInCart");
+  itemsInCart = itemsInCart ? itemsInCart + "," + id : id;
+  window.localStorage.setItem("itemsInCart", itemsInCart);
   return false;
 }
 
-(function checkCart(){
-  var itemsInCart = window.localStorage.getItem('itemsInCart');
-  if(itemsInCart){
-    itemsInCart = itemsInCart.split(',');
-    itemsInCart.forEach(function(id){
+
+
+// check if any cat is already in cart.
+(function checkCart() {
+  var itemsInCart = window.localStorage.getItem("itemsInCart");
+  if (itemsInCart) {
+    itemsInCart = itemsInCart.split(",");
+    itemsInCart.forEach(function(id) {
       addCartItem(id);
     });
   }
-})()
+})();
