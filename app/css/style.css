@@ -110,16 +110,16 @@
 .cat:nth-of-type(1n + 1) > .cat-card {
   background-color: #cef4d5; }
 
-.cat:nth-of-type(2n + 2) > .cat-card {
+.cat:nth-of-type(2n + 1) > .cat-card {
   background-color: #d4e8fe; }
 
-.cat:nth-of-type(3n + 3) > .cat-card {
+.cat:nth-of-type(3n + 1) > .cat-card {
   background-color: #faeefa; }
 
-.cat:nth-of-type(4n + 4) > .cat-card {
+.cat:nth-of-type(4n + 1) > .cat-card {
   background-color: #e5f3e3; }
 
-.cat:nth-of-type(5n + 5) > .cat-card {
+.cat:nth-of-type(5n + 1) > .cat-card {
   background-color: #fce9e4; }
 
 .cats.container {

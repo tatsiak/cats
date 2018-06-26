@@ -30,20 +30,10 @@
   }
 }
 
-.cat:nth-of-type(1n + 1) > .cat-card {
-  background-color: nth($bg-colors, 1);
-}
-.cat:nth-of-type(2n + 2) > .cat-card {
-  background-color: nth($bg-colors, 2);
-}
-.cat:nth-of-type(3n + 3) > .cat-card {
-  background-color: nth($bg-colors, 3);
-}
-.cat:nth-of-type(4n + 4) > .cat-card {
-  background-color: nth($bg-colors, 4);
-}
-.cat:nth-of-type(5n + 5) > .cat-card {
-  background-color: nth($bg-colors, 5);
+@for $i from 1 through 5 {
+  .cat:nth-of-type(#{$i}n + 1) > .cat-card {
+    background-color: nth($bg-colors, $i);
+  }   
 }
 
 .cats.container {
